@@ -19,4 +19,17 @@ public class Doctors {
                 .forEach((value) -> System.out.println(value));
         return uniqueList;
     }
+
+    public static List<String> getUniqueListOfSpecializationsOtherSolution(List<String> specializations){
+        List<String> uniqueList = specializations.stream()
+                .map(spec -> spec.split(":"))
+                .flatMap(array -> Arrays.stream(array))
+                .distinct()
+                .skip(1)
+                .filter(spec -> !spec.equals("Przychodnia"))
+                .collect(Collectors.toList());
+        uniqueList.forEach(System.out::println);
+        return uniqueList;
+    }
+
 }
