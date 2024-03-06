@@ -13,7 +13,7 @@ public class Doctors {
                     return Arrays.asList(split).stream();
                 })
                 .distinct()
-                .skip(1)
+                .filter(spec -> !spec.equals("Szpital"))
                 .filter(spec -> !spec.equals("Przychodnia"))
                 .collect(Collectors.toList())
                 .forEach((value) -> System.out.println(value));
@@ -25,7 +25,7 @@ public class Doctors {
                 .map(spec -> spec.split(":"))
                 .flatMap(array -> Arrays.stream(array))
                 .distinct()
-                .skip(1)
+                .filter(spec -> !spec.equals("Szpital"))
                 .filter(spec -> !spec.equals("Przychodnia"))
                 .collect(Collectors.toList());
         uniqueList.forEach(System.out::println);
